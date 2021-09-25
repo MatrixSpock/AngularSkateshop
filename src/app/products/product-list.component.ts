@@ -79,4 +79,9 @@ export class ProductListComponent implements OnInit {
     return this.skateboards.filter((product: IProduct) =>
       product.productName.toLowerCase().includes(value));
   }
+
+  onNotify(message: string): void {
+    console.log(`JRI Container Component logging child event and value: ${message}`)
+    this.pageTitle = `Skateboard Rating: ${message}`;
+  }
 }

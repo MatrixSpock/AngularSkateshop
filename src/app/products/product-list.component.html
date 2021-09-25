@@ -50,7 +50,7 @@
           <td>{{decks.releaseDate}}</td>
           <td>{{decks.price | currency:'USD':'symbol':'1.2-2'}}</td>
           <td>
-            <pm-star [rating]="decks.starRating"></pm-star>
+            <pm-star [rating]="decks.starRating" (notify)="onNotify($event)"></pm-star>
           </td>
         </tr>
       </tbody>
