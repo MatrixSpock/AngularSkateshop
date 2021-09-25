@@ -13,8 +13,8 @@ export class ProductListComponent implements OnInit {
   showImage: boolean = true;
 
   /*
-    1. Declare a private backing variable to hold the value managed by the getter and setter.
-    We use the underscore in front of the property name to denote it as a private variable and initialize it to an empty string.
+  1. Declare a private backing variable to hold the value managed by the getter and setter.
+  We use the underscore in front of the property name to denote it as a private variable and initialize it to an empty string.
   */
   private _listFilter: string = '';
 
@@ -34,8 +34,12 @@ export class ProductListComponent implements OnInit {
     this._listFilter = value;
     // 3.3 We don't need to return a value.
     console.log('set listFilter', value);
+
+    this.filteredProducts = this.performFilter(value);
   }
 
+  //Once we filter the products array, we lose our original data and can't get it back without regetting the data from its source.
+  filteredProducts: IProduct[] = [];
   skateboards: IProduct[] = [
     {
       "productId": 2,
@@ -68,4 +72,11 @@ export class ProductListComponent implements OnInit {
     this.listFilter = "Blind";
   }
 
+  // takes in the listFilter which is a string. Returns the filtered array of products.
+  performFilter(value: string): IProduct[] {
+    //To lower is used to improve accuracy when comparing.
+    value = value.toLowerCase();
+    return this.skateboards.filter((product: IProduct) =>
+      product.productName.toLowerCase().includes(value));
+  }
 }
