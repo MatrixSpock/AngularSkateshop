@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="table-responsive">
-    <table class='table'>
+    <table class='table' *ngIf='skateboards.length '>
       <thead>
         <tr>
           <th>
@@ -27,7 +27,14 @@
         </tr>
       </thead>
       <tbody>
-
+        <tr *ngFor="let decks of skateboards">
+          <td></td>
+          <td>{{decks.productName}}</td>
+          <td>{{decks.productCode}}</td>
+          <td>{{decks.releaseDate}}</td>
+          <td>{{decks.price}}</td>
+          <td>{{decks.starRating}}</td>
+        </tr>
       </tbody>
     </table>
   </div>
