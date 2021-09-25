@@ -46,7 +46,7 @@
                  [style.margin.px]='imageMargin'>
           </td>
           <td>{{decks.productName}}</td>
-          <td>{{decks.productCode | lowercase}}</td>
+          <td>{{decks.productCode | lowercase | convertToSpaces:'-'}}</td>
           <td>{{decks.releaseDate}}</td>
           <td>{{decks.price | currency:'USD':'symbol':'1.2-2'}}</td>
           <td>{{decks.starRating}}</td>
