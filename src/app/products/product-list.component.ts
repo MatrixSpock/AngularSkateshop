@@ -8,7 +8,8 @@ export class ProductListComponent {
   pageTitle: string = 'Skateboard List';
   imageWidth: number = 150;
   imageMargin: number = 2;
-  showImage: boolean = false;
+  showImage: boolean = true;
+  listFilter: string = 'blind'
   skateboards: any[] = [
     {
       "productId": 2,
