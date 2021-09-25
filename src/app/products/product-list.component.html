@@ -11,12 +11,14 @@
     </div>
   </div>
   <div class='table-responsive'>
-    <table class='table' *ngIf='skateboards.length '>
+    <table class='table'
+           *ngIf='skateboards.length '>
       <thead>
         <tr>
           <th>
-            <button class='btn btn-primary'>
-              Show Image
+            <button class='btn btn-primary'
+                    (click)='toggleImage()'>
+              {{showImage ? 'Hide' : 'Show'}} Image
             </button>
           </th>
           <th>Product</th>
@@ -29,7 +31,11 @@
       <tbody>
         <tr *ngFor='let decks of skateboards'>
           <td>
-            <img [src]='decks.imageUrl' [title]='decks.productName' [style.width.px]='imageWidth' [style.margin.px]='imageMargin'>
+            <img *ngIf='showImage'
+                 [src]='decks.imageUrl'
+                 [title]='decks.productName'
+                 [style.width.px]='imageWidth'
+                 [style.margin.px]='imageMargin'>
           </td>
           <td>{{decks.productName}}</td>
           <td>{{decks.productCode}}</td>

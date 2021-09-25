@@ -6,8 +6,9 @@ import { Component } from "@angular/core";
 })
 export class ProductListComponent {
   pageTitle: string = 'Skateboard List';
-  imageWidth: number =150;
-  imageMargin: number =2;
+  imageWidth: number = 150;
+  imageMargin: number = 2;
+  showImage: boolean = false;
   skateboards: any[] = [
     {
       "productId": 2,
@@ -30,4 +31,9 @@ export class ProductListComponent {
       "imageUrl": "assets/images/Skateboard Decks/Blind-OG-Reaper-Logo-8.0_-Skateboard-Deck--_299301-front-US.jpg"
     }
   ];
+
+  toggleImage(): void {
+    this.showImage = !this.showImage;
+  }
+
 }
