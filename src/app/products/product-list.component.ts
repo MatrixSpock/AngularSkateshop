@@ -11,7 +11,31 @@ export class ProductListComponent implements OnInit {
   imageWidth: number = 150;
   imageMargin: number = 2;
   showImage: boolean = true;
-  listFilter: string = 'blind'
+
+  /*
+    1. Declare a private backing variable to hold the value managed by the getter and setter.
+    We use the underscore in front of the property name to denote it as a private variable and initialize it to an empty string.
+  */
+  private _listFilter: string = '';
+
+  // 2. Next we define the getter and specify the property data type.
+  get listFilter(): string {
+    // 2.1 the body of the getter can include code to process the property value before returning it.
+
+    // 2.2 the getter then returns the processed value.
+    return this._listFilter;
+  }
+
+  // 3. The setter begins with the "set" keyword followed by the name of the property. The setter has a single parameter, which is the value assigned to the property. The setter is executed any time a value is assigned to the associated property.
+  set listFilter(value: string) {
+    //3.1 We can use the body of the setter to perform an operation when the property is changed.
+
+    // 3.2 We set the value into our private backing variable.
+    this._listFilter = value;
+    // 3.3 We don't need to return a value.
+    console.log('set listFilter', value);
+  }
+
   skateboards: IProduct[] = [
     {
       "productId": 2,
@@ -39,8 +63,9 @@ export class ProductListComponent implements OnInit {
     this.showImage = !this.showImage;
   }
 
-  ngOnInit(){
+  ngOnInit() {
     console.log("JRI logging ngOnInit");
+    this.listFilter = "Blind";
   }
 
 }
