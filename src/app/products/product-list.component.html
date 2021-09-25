@@ -10,7 +10,7 @@
       </div>
     </div>
   </div>
-  <div class="table-responsive">
+  <div class='table-responsive'>
     <table class='table' *ngIf='skateboards.length '>
       <thead>
         <tr>
@@ -27,8 +27,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let decks of skateboards">
-          <td></td>
+        <tr *ngFor='let decks of skateboards'>
+          <td>
+            <img [src]='decks.imageUrl' [title]='decks.productName' [style.width.px]='imageWidth' [style.margin.px]='imageMargin'>
+          </td>
           <td>{{decks.productName}}</td>
           <td>{{decks.productCode}}</td>
           <td>{{decks.releaseDate}}</td>
