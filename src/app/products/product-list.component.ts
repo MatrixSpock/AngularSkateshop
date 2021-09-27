@@ -1,4 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core'; "@angular/core";
+
+import { ProductService } from "./product.service";
 import { IProduct } from "./products";
 
 @Component({
@@ -6,12 +8,14 @@ import { IProduct } from "./products";
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
+
 export class ProductListComponent implements OnInit {
   pageTitle: string = 'Skateboard List';
   imageWidth: number = 150;
   imageMargin: number = 2;
   showImage: boolean = true;
 
+  constructor(private productService: ProductService) { }
   /*
   1. Declare a private backing variable to hold the value managed by the getter and setter.
   We use the underscore in front of the property name to denote it as a private variable and initialize it to an empty string.
@@ -40,28 +44,7 @@ export class ProductListComponent implements OnInit {
 
   //Once we filter the products array, we lose our original data and can't get it back without regetting the data from its source.
   filteredProducts: IProduct[] = [];
-  skateboards: IProduct[] = [
-    {
-      "productId": 2,
-      "productName": "Blind - Switch Blade",
-      "productCode": "BLD-001",
-      "releaseDate": "March 18, 2021",
-      "price": 69.90,
-      "description": "7.2 wide, super sick skating deck.",
-      "starRating": 4.2,
-      "imageUrl": "assets/images/Skateboard Decks/Blind-Switch-Blade-8.5_-Skateboard-Deck--_312720-front-US.jpg"
-    },
-    {
-      "productId": 5,
-      "productName": "Blind - Reaper OG",
-      "productCode": "BLD-002",
-      "releaseDate": "March 23, 2021",
-      "price": 79.90,
-      "description": "7.2 wide, super sick skating deck.",
-      "starRating": 4.9,
-      "imageUrl": "assets/images/Skateboard Decks/Blind-OG-Reaper-Logo-8.0_-Skateboard-Deck--_299301-front-US.jpg"
-    }
-  ];
+  skateboards: IProduct[] = [];
 
   toggleImage(): void {
     this.showImage = !this.showImage;
@@ -69,7 +52,8 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit() {
     console.log("JRI logging ngOnInit");
-    this.listFilter = "Blind";
+    this.skateboards  = this.productService.getProducts();
+    this.filteredProducts = this.skateboards;
   }
 
   // takes in the listFilter which is a string. Returns the filtered array of products.
